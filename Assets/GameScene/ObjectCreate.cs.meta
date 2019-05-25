@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: b18848623f4230e4fbe71313a19b7168
+timeCreated: 1530598241
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BigFloorPrefab: {fileID: 1888696678436762, guid: e85b096625c002642af3284bff2de58c,
+      type: 2}
+  - SmartFloorPrefab_x: {fileID: 1110812634997858, guid: 28bb23087790e784781d090153267643,
+      type: 2}
+  - SmartFloorPrefab_y: {fileID: 1560766196253466, guid: f8626809884847943a737b9f3d063d8a,
+      type: 2}
+  - StartWallPrefab: {fileID: 1431864234211084, guid: 32a83e47b637b0648ad12bc7ac039be5,
+      type: 2}
+  - GrowWallPrefab_x: {fileID: 1053079969338836, guid: 1e9e9a966761937429bbcb3ded4d13f1,
+      type: 2}
+  - GrowWallPrefab_y: {fileID: 1591476494017724, guid: 21e0856670fdd344ba458e09d26ea0e2,
+      type: 2}
+  - StartFloorPrefab: {fileID: 1861524262120976, guid: e87097088dfb80945af7803032e00c4b,
+      type: 2}
+  - FinishFloorPrefab: {fileID: 1661047638528818, guid: 8305271e971f8d74bbf4a6e13a8b44fa,
+      type: 2}
+  - StatuePrefab: {fileID: 1678347315930736, guid: 59473fe8be90c13408dc4a5522400be4,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

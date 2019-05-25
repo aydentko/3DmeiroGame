@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 14888344c61e1834c983ffe53a6bfe24
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MezirushiPrefab: {fileID: 1733726042951444, guid: 5edd7bd80a4ab6843af122b08ba675f2,
+      type: 2}
+  - MarkWindow: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,80 @@
+        MaxScreenSize = new Vector2(Screen.width, Screen.height);
+        Debug.Log("ScreenSize" + MaxScreenSize);
+        //カーソル移動をウィンドウ内のみに制限
+        Cursor.lockState = CursorLockMode.Confined;
+        SetCursorPos(Mathf.FloorToInt(MaxScreenSize.x / 2), Mathf.FloorToInt(MaxScreenSize.y / 2));
+        this.player_cam = GameObject.Find("PlayerCamera");
+        this.main_cam = GameObject.Find("Main Camera");
+
+        this.main_cam.SetActive(false);
+        this.player_cam.SetActive(true);
+        
+        lastMousePosition = Input.mousePosition;
+        nowMousePosition = Input.mousePosition;
+        mouseMoveDis = new Vector2(0, 0);
+        newAngle = new Vector2(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y);
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+        GameObject p_head = GameObject.Find("Head") as GameObject;
+        nowMousePosition = Input.mousePosition;
+        Debug.Log("NowMousePos = " + nowMousePosition);
+        mouseMoveDis = new Vector2(nowMousePosition.y - lastMousePosition.y, lastMousePosition.x - nowMousePosition.x);
+        if (nowMousePosition.x >= MaxScreenSize.x && nowMousePosition.y >= MaxScreenSize.y && nowMousePosition.x < 0 && nowMousePosition.y < 0)
+        {
+            // マウスが画面外に出たときは一旦初期化する
+            nowMousePosition = lastMousePosition;
+            mouseMoveDis = new Vector2(0, 0);
+
+        }
+
+        // カメラ回転方向の判定フラグがtrueの場合
+        if (nowMousePosition.x < MaxScreenSize.x && nowMousePosition.y < MaxScreenSize.y && nowMousePosition.x >= 0 && nowMousePosition.y > 0) {
+            if (nowMousePosition.x > 0)
+            {
+                // X軸の回転：マウスドラッグ方向に視点回転
+                // マウスの垂直移動値に変数rotationSpeedを×
+                // (クリック時の座標とマウス座標の現在値の差分値)
+                newAngle.x -= (nowMousePosition.y - lastMousePosition.y) * rotationSpeed.x;
+                angleUpdate = true;
+
+            }
+            if (nowMousePosition.y > 0)
+            {
+                // Y軸の回転：マウスドラッグ方向に視点回転
+                // マウスの水平移動値に変数rotationSpeedを×
+                // （クリック時の座標とマウス座標の現在地の差分地）
+                newAngle.y -= (lastMousePosition.x - nowMousePosition.x) * rotationSpeed.y;
+                angleUpdate = true;
+
+            }
+            if (angleUpdate)
+            {
+                // newAngleの角度をカメラ角度に格納
+                p_head.transform.localEulerAngles = new Vector3(this.newAngle.x, p_head.transform.localEulerAngles.y, 0);
+                this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.newAngle.y, 0);
+                angleUpdate = false;
+
+            }
+
+
+        }
+        // マウス座標を変数"lastMousePosition"に格納
+        lastMousePosition = Input.mousePosition;
+
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            // 後ろを振り返る
+            for (int i = 0; i < 180; i++)
+            {
+                newAngle.y += 10.0f * rotationSpeed.y;
+                this.GetComponent<Rigidbody>().angularVelocity = new Vector3(this.transform.localEulerAngles.x, this.newAngle.y, 0);
+
+
+            }
+
+
+        }
